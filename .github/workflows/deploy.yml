@@ -80,6 +80,7 @@ jobs:
                 ParamDBName="${{ secrets.DB_NAME }}" \
                 ParamDBPort="${{ secrets.DB_PORT }}" \
                 ParamComposioKey="${{ secrets.COMPOSIO_KEY }}" \
+                ParamOpenAIKey="${{ secrets.OPENAI_API_KEY }}" \
                 ParamJiraInstanceUrl="${{ secrets.JIRA_INSTANCE_URL }}" \
                 ParamJiraEmail="${{ secrets.JIRA_EMAIL }}" \
                 ParamJiraApiToken="${{ secrets.JIRA_API_TOKEN }}" \
@@ -102,6 +103,7 @@ jobs:
                 ParamDBName="${{ secrets.PROD_DB_NAME }}" \
                 ParamDBPort="${{ secrets.DB_PORT }}" \
                 ParamComposioKey="${{ secrets.COMPOSIO_KEY }}" \
+                ParamOpenAIKey="${{ secrets.OPENAI_API_KEY }}" \
                 ParamJiraInstanceUrl="${{ secrets.JIRA_INSTANCE_URL }}" \
                 ParamJiraEmail="${{ secrets.JIRA_EMAIL }}" \
                 ParamJiraApiToken="${{ secrets.JIRA_API_TOKEN }}" \

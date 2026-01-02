@@ -1,0 +1,4 @@
+psycopg2-binary
+requests==2.31.0   # if you call external APIs
+boto3==1.26.152     # if you interact with AWS services
+pytz

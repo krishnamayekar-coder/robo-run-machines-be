@@ -1,0 +1,134 @@
+$connect
+$disconnect
+$default
+
+jira.issue.created
+jira.issue.updated
+jira.project.updated
+
+github.push
+github.pullrequest.opened
+github.pullrequest.merged
+github.workflow.status
+
+
+system.broadcast
+system.user.online
+system.user.offline
+
+chat.send
+chat.receive
+chat.typing
+chat.history
+chat.bot.reply
+chat.user.join
+chat.user.leave
+chat.presence.update
+chat.group.send
+chat.group.notify
+
+
+===================
+{
+  "action": "jira.events",
+  "eventType": "issue.created",
+  "project": "DEV",
+  "issueKey": "DEV-123",
+  "summary": "Login button not working",
+  "fields": {
+    "status": "To Do",
+    "priority": "High"
+  }
+}
+
+{
+  "action": "jira.events",
+  "eventType": "issue.updated",
+  "issueKey": "DEV-123",
+  "changes": {
+    "status": ["To Do", "In Progress"],
+    "assignee": ["Akshay", "Rohit"]
+  }
+}
+
+
+===FE=========================
+ws.onmessage = (msg) => {
+  const data = JSON.parse(msg.data);
+
+  if (data.action === "jira.events") {
+    switch (data.eventType) {
+      case "issue.created":
+        console.log("New Issue:", data.issueKey);
+        break;
+
+      case "issue.updated":
+        console.log("Updated Issue:", data.changes);
+        break;
+
+      case "issue.commented":
+        console.log("New Comment:", data.comment);
+        break;
+
+      default:
+        console.log("Unknown Jira event:", data);
+    }
+  }
+};
+
+
+==BE======================
+route = event["requestContext"]["routeKey"]
+body = json.loads(event["body"])
+
+if route == "jira.events":
+    event_type = body.get("eventType")
+    
+    if event_type == "issue.created":
+        process_issue_created(body)
+
+    elif event_type == "issue.updated":
+        process_issue_updated(body)
+
+    elif event_type == "issue.commented":
+        process_issue_commented(body)
+
+
+
+
+============================================================
+{
+  "action": "github.events",
+  "eventType": "push",
+  "repository": "my-app",
+  "branch": "main",
+  "commits": 3
+}
+
+{
+  "action": "github.events",
+  "eventType": "pullrequest.opened",
+  "prNumber": 12,
+  "author": "Akshay"
+}
+
+
+
+
+==============================
+github.events
+jira.events
+chat.history
+chat.receive
+chat.send
+system.user.offline
+system.user.online
+system.broadcast
+github.pullrequest.merged
+github.pullrequest.opened
+github.push
+jira.project.updated
+jira.issue.updated
+jira.issue.created
+sendMessage
+fetchMessages

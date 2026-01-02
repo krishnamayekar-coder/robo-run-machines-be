@@ -1,0 +1,12 @@
+flask
+flask-restx
+aws-lambda-wsgi
+mangum
+fastapi
+pydantic
+uvicorn
+awsgi
+jwt
+requests
+psycopg2-binary
+openai
